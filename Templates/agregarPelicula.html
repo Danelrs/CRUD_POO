@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Pelicula</title>
     <style>
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0%;
             padding: 0%;
             height: 100vh;
-            background-image: url("{{ url_for('static', filename='fondo1.jpeg') }}");
+            background-image: url(//Static/fondo1.jpeg);
             background-size: cover;
         }
 
@@ -179,7 +180,7 @@
                 <input name="año" type="number" required placeholder="Año de estreno">
             </div>
             <div class="boton">
-                <button class="botonAgregar">Agregar película</button>
+                <button class="botonAgregar" type="submit">Agregar película</button>
             </div>
         </form>
 
