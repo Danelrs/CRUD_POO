@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 
   <head>
     <meta charset="UTF-8" />
@@ -11,20 +10,21 @@
      body {
         margin: 0;
         padding: 0;
-        background-color: red;
+        background-image: url("{{ url_for('static', filename='fondoPelis.jpg') }}");
+        background-size: cover;
       } 
 
       .container {
         max-width: 1200px;
         margin: 20px auto;
         padding: 20px;
-        background-color: #fff;
+        background-color: white;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
 
       .botonEliminar {
-        background: #fff;
+        background: #ffffff00;
         color: #d53d38;
         border: 2px solid #d53d38;
         padding: 10px 20px;
@@ -65,9 +65,9 @@
       }
 
       .botonEditar {
-        background: #fff;
-        color: #e0ae23;
-        border: 2px solid #e0ae23;
+        background: #ffffff00;
+        color: blue;
+        border: 2px solid blue;
         padding: 10px 20px;
         border-radius: 3px;
         position: relative;
@@ -83,7 +83,7 @@
 
       .botonEditar::after {
         content: "";
-        background: #e0ae23;
+        background: blue;
         position: absolute;
         z-index: -1;
         padding: 16px 20px;
@@ -115,18 +115,59 @@
         margin-top: 20px;
         text-align: center;
         text-decoration: none;
-        color: #d53d38;
+        color: blue;
         font-weight: bold;
-        border-bottom: 1px solid #d53d38;
+        border-bottom: 1px solid blue;
       }
 
       .add-movie-link:hover {
-        color: #601917;
-        border-bottom: 1px solid #601917;
+        color: rgb(16, 16, 150);
+        border-bottom: 1px solid rgb(16, 16, 150);
       }
 
       .fixed-cell-width {
         width: 5rem;
+      }
+
+      .botonLogout {
+        background: #ffffff00;
+        color: blue;
+        border: 2px solid blue;
+        padding: 10px 20px;
+        border-radius: 3px;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        display: inline-block;
+        text-align: center;
+      }
+
+      .botonLogout:hover {
+        color: white;
+      }
+
+      .botonLogout::after {
+        content: "";
+        background: blue;
+        position: absolute;
+        z-index: -1;
+        padding: 16px 20px;
+        display: block;
+        left: 0;
+        right: 0;
+        top: 100%;
+        bottom: -100%;
+        -webkit-transition: all 0.35s;
+        transition: all 0.35s;
+      }
+
+      .botonLogout:hover::after {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        -webkit-transition: all 0.35s;
+        transition: all 0.35s;
       }
     </style>
   </head>
@@ -135,11 +176,11 @@
     <div class="container">
       <h1 class="text-center mb-5">Catalogo de Películas</h1>
       <table
-        class="table table-bordered table-sm table-striped table-hover text-center"
+        class="table table-bordered table-sm table-striped table-hover text-center" 
       >
         <thead>
           <tr>
-            <th>Id</th>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Duración</th>
             <th>Año</th>
@@ -185,6 +226,9 @@
       </table>
       <div class="agregarPeli">
         <a href="/agregar_pelicula" class="add-movie-link">Agregar Película</a>
+        <form method="POST" action="/logout">
+          <button type="submit" class="botonLogout"><b>Log Out</b></button>
+        </form>
       </div>
     </div>
   </body>

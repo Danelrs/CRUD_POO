@@ -10,7 +10,8 @@
         margin: 0%;
         padding: 0%;
         height: 100vh;
-        background-color: red;
+        background-image: url("{{ url_for('static', filename='fondoP1.jpg') }}");
+        background-size: cover;
       }
 
       .title {
@@ -19,7 +20,7 @@
         top: 50%;
         transform: translate(-50%, -50%);
         width: 500px;
-        background: white;
+        background: rgba(255, 255, 255, 0.897);
         border-radius: 10px;
       }
 
@@ -27,6 +28,7 @@
         text-align: center;
         padding: 0 0 20px 0;
         border-bottom: 1px solid silver;
+        color: blue;
       }
 
       .title form {
@@ -95,9 +97,9 @@
         }
 
       .botonEditar {
-        background: #fff;
-        color: #e0ae23;
-        border: 2px solid #e0ae23;
+        background: #ffffff00;
+        color: blue;
+        border: 2px solid blue;
         padding: 10px 20px;
         border-radius: 3px;
         position: relative;
@@ -113,7 +115,7 @@
 
       .botonEditar::after {
         content: "";
-        background: #e0ae23;
+        background: blue;
         position: absolute;
         z-index: -1;
         padding: 16px 20px;
@@ -174,7 +176,7 @@
           <input name="año" type="number" required placeholder="Año de estreno" value="{{ pelicula.año }}">
       </div>
       <div class="boton">
-        <button class="botonEditar" type="submit">Editar película</button>
+        <button type="submit" class="botonEditar">Editar película</button>
     </div>
       </form>
     </div>
