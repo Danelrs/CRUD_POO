@@ -43,8 +43,10 @@ def valid_login(username, password):
     cursor.execute(query, (username,))
     user = cursor.fetchone()
     if user and check_password_hash(user['Contraseña'], password):
+        session['username'] = username  # Set session variable
         return True
     return False
+
 
 #! Funciones que hacen las propias consultas SQL.
 
@@ -93,7 +95,7 @@ def eliminar_pelicula(id_pelicula):
 
 @app.route("/", methods=['POST', 'GET'])
 def home():
-    if (is_user_logged_in()):
+    if session.get('username'):
         peliculas = obtener_peliculas()
         return render_template('dashboard.html', peliculas=peliculas, total_peliculas=len(peliculas))
     if request.method == 'POST':
@@ -166,7 +168,7 @@ def eliminarPelicula():
 def logout():
     resp = make_response(redirect(url_for('home')))
     resp.set_cookie('session_token', '', expires=0)
-    session.pop('username', None)
+    session.pop('username', None)  # Clear session variable
     return resp
 
 
